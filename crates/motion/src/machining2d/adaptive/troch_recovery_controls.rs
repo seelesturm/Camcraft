@@ -62,7 +62,7 @@ fn recovery_f2_subcell_retained_stock_and_unknown_controls() {
     let radius = crate::quality::rim_for(10.0, ras.h);
     assert!(ras.stock_clear(p, radius));
     let envelope = Region::sweep(&[path.clone()], radius).unwrap();
-    let missed = envelope.intersection(&feature).unwrap();
+    let missed = envelope.intersect(&feature).unwrap();
     assert!(!missed.is_empty() && missed.area() > 0.0, "real retained stock intersects the claimed clear envelope");
     // Clearance must be refused by the polygon evidence, not accepted
     // from the zero represented cells. No production law is changed.

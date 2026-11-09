@@ -51,7 +51,7 @@ fn opening(center: &Region, s: &AdaptiveSpec) -> Result<Opening, String> {
     let mut ras = Raster::from_region(reach, d / GRID_PER_D, s.r).map_err(|e| format!("{e:?}"))?;
     let rim = crate::quality::rim_for(d, ras.h);
     let bound = deg_at_rim(s.load * (1.0 + s.tol), d, rim);
-    let bite = deg_at_rim(BITE_LOAD, d, rim);
+    let _bite = deg_at_rim(BITE_LOAD, d, rim);
     let (step, seg) = (s.r / 10.0, s.r / 8.0);
     let ladder: Vec<f64> = SPIRAL_STEPS.iter().map(|f| d * s.load * f).collect();
     let spine_len = super::super::medial::lengths(sp.points()).last().copied().unwrap_or(0.0);
@@ -61,7 +61,7 @@ fn opening(center: &Region, s: &AdaptiveSpec) -> Result<Opening, String> {
     if s.bore > 0.0 {
         ras.cut(s.seed, s.seed, s.bore);
     }
-    let ras0 = ras.clone();
+    let _ras0 = ras.clone();
     let mut worst = (0.0f64, s.start);
     // The opening: the helix's orbit walked flat, then revolutions out
     // to the loop radius, each step the largest the load holds.
