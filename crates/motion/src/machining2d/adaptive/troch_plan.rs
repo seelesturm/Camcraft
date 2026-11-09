@@ -374,3 +374,7 @@ pub(super) fn plan_with(reach: &Region, center: &Region, s: &AdaptiveSpec, landi
     (out.passes, out.joins) = (passes, joins);
     Ok(out)
 }
+
+#[cfg(test)]
+#[path = "troch_recovery.rs"]
+mod recovery;
